@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row g-4">
+    <div class="col-md-3">
+        <div class="card text-bg-primary shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">Total Students</h5>
+                <p class="display-6">{{ total_students }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-bg-success shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">Total Courses</h5>
+                <p class="display-6">{{ total_courses }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-bg-warning shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">Total Enrollments</h5>
+                <p class="display-6">{{ total_enrollments }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-bg-secondary shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">Recent Students</h5>
+                <p class="display-6">{{ recent_students.count }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row mt-4 g-4">
+    <div class="col-md-6">
+        <div class="card shadow-sm">
+            <div class="card-header">Recent Students</div>
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    {% for student in recent_students %}
+                        <li class="list-group-item">{{ student.name }} ({{ student.student_id }})</li>
+                    {% empty %}
+                        <li class="list-group-item">No students yet.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card shadow-sm">
+            <div class="card-header">Recent Courses</div>
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    {% for course in recent_courses %}
+                        <li class="list-group-item">{{ course.course_name }}</li>
+                    {% empty %}
+                        <li class="list-group-item">No courses yet.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

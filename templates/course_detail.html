@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card shadow-sm">
+    <div class="card-body">
+        <h3>{{ course.course_name }}</h3>
+        <p><strong>Code:</strong> {{ course.course_code }}</p>
+        <p><strong>Description:</strong> {{ course.description }}</p>
+        <p><strong>Duration:</strong> {{ course.duration }}</p>
+        <p><strong>Fee:</strong> {{ course.fee }}</p>
+        {% if course.image %}
+            <img src="{{ course.image.url }}" class="img-fluid mb-3" width="240" alt="Course image">
+        {% else %}
+            <p>No image uploaded.</p>
+        {% endif %}
+        <a class="btn btn-primary" href="{% url 'courses:course_update' course.pk %}">Edit</a>
+        <a class="btn btn-outline-danger" href="{% url 'courses:course_delete' course.pk %}">Delete</a>
+    </div>
+</div>
+{% endblock %}

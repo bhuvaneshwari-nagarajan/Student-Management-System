@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card shadow-sm">
+    <div class="card-body">
+        <h3>Remove Enrollment</h3>
+        <p>Are you sure you want to remove this enrollment?</p>
+        <form method="post">
+            {% csrf_token %}
+            <button class="btn btn-danger" type="submit">Confirm Delete</button>
+            <a class="btn btn-secondary" href="{% url 'enrollments:enrollment_list' %}">Cancel</a>
+        </form>
+    </div>
+</div>
+{% endblock %}
